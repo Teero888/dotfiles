@@ -2,8 +2,10 @@
 
 !nvim/
 !alacritty/
+!i3/
 
 !nvim/**
 !alacritty/**
+!i3/**
 
 lazy-lock.json

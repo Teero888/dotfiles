@@ -3,7 +3,6 @@ vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = false
-vim.g.colorscheme = "greyhome"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
@@ -29,3 +28,5 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 15
 vim.opt.hlsearch = true
 vim.opt.foldmethod = "marker"
+
+pcall(vim.cmd, "colorscheme " .. "greyhome")
