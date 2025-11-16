@@ -20,7 +20,6 @@ require("lazy").setup({
 	require("plugins.lspconfig"),
 	require("plugins.conform"),
 	require("plugins.cmp"),
-	require("plugins.ayu"),
 	require("plugins.mini"),
 	require("plugins.treesitter"),
 	require("plugins.perfanno"),

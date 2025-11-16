@@ -28,3 +28,4 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 15
 vim.opt.hlsearch = true
 vim.opt.foldmethod = "marker"
+vim.opt.colorscheme = "greyhome"
