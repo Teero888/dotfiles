@@ -8,7 +8,7 @@ opacity = 1.0
 [terminal]
 # shell = {program = "zsh", args = []}
 # shell = {program = "nvim", args = ["--cmd 'term'"]}
-shell = {program = "nvim", args = []}
+shell = {program = "nvim", args = ["todo.md"]}
 
 [mouse]
 hide_when_typing = true

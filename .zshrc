@@ -8,6 +8,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/bin/revng"
@@ -29,6 +30,8 @@ alias tater='perf'
 # fuck gcc
 export CC=clang
 export CXX=clang++
+
+export SUDO_ASKPASS=/usr/bin/lxqt-openssh-askpass
 
 # for android dev
 export ANDROID_HOME=/opt/android-sdk

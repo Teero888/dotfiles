@@ -1,0 +1,14 @@
+# Frametee Configuration (https://github.com/Teero888/ddnet_frametee_c99)
+
+[keybinds]
+dummy_fire = "MouseLeft"
+
+[mouse]
+sensitivity = 80.00
+max_distance = 500.00
+
+[graphics]
+vsync = false
+show_fps = true
+fps_limit = 500
+lod_bias = -0.50

@@ -152,3 +152,4 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 for_window [class="Qalculate-gtk"] floating enable
+for_window [class="AstroSim"] floating enable
