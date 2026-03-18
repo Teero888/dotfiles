@@ -28,7 +28,7 @@
     (my/filter-minor-mode-maps))
 
   (defvar my/allowed-minor-mode-prefixes
-    '("eat" "corfu" "vertico")
+    '("eat" "magit" "git-gutter")
     "List of string prefixes for minor modes whose keymaps should NOT be purged.")
 
   (defun my/filter-minor-mode-maps (&rest _)
@@ -100,7 +100,12 @@
     
     "t"  '(eat :which-key "terminal")
 
-    "g"  '(:ignore t :which-key "git"))
+    "g"  '(:ignore t :which-key "git")
+    "gs" '(magit-status :which-key "status")
+    "gd" '(magit-diff-unstaged :which-key "diff unstaged")
+    "gl" '(magit-log-current :which-key "log current")
+    "gb" '(magit-branch-checkout :which-key "branch checkout")
+    "gc" '(magit-commit-create :which-key "commit"))
 
   ;; Minibuffer / Completion Maps
   (general-define-key

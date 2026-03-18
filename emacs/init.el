@@ -45,6 +45,7 @@
 (require 'setup-completion)
 (require 'setup-projects)
 (require 'setup-terminal)
+(require 'setup-git)
 (require 'setup-lsp)
 (require 'setup-languages)
 (require 'setup-keys)
