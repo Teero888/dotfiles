@@ -22,7 +22,17 @@
   (corfu-auto-prefix 0)
   (corfu-auto-delay 0.0)
   (corfu-quit-at-boundary t)
-  (corfu-preview-current nil))
+  (corfu-preview-current nil)
+  (corfu-preselect 'first)      ; Always preselect the first candidate
+  (corfu-on-at-pt-timer-delay 0.0) ; Smoothness for immediate display
+  :config
+  ;; Enable the Echo extension
+  (corfu-echo-mode 1)
+  ;; This allows Corfu to trigger even when deleting characters
+  (with-eval-after-load 'corfu-auto
+    (add-to-list 'corfu-auto-commands #'backward-delete-char-untabify)
+    (add-to-list 'corfu-auto-commands #'delete-backward-char))
+)
 
 ;; Embark (Actions for everything)
 (use-package embark

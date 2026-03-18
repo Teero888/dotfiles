@@ -19,6 +19,7 @@ emacs/auto-save-list
 emacs/url
 emacs/projectile-bookmarks.eld
 emacs/*.elc
+emacs/tramp
 
 !i3/
 !i3/**
