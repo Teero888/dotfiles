@@ -12,7 +12,11 @@
 
 (use-package evil-collection
   :after evil
-  :config (evil-collection-init))
+  :custom
+  (evil-collection-setup-minibuffer t)
+  :config
+  ;; Only enable for things you actually use
+  (evil-collection-init '(dired eglot eat magit buff-menu ibuffer)))
 
 (use-package evil-commentary
   :after evil

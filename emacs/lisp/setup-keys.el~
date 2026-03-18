@@ -22,7 +22,7 @@
     (interactive)
     (if (and (bound-and-true-p corfu-mode) (corfu--visible-p))
         (corfu-quit)
-      ()))
+      (completion-at-point)))
 
   ;; ── VIM ESSENTIALS (Rebuilding the basics) ────────────────
 
@@ -42,14 +42,12 @@
    "gg" #'evil-goto-first-line
    ;; Editing
    "i" #'evil-insert
-   "I" #'evil-insert-line
    "a" #'evil-append
    "A" #'evil-append-line
    "o" #'evil-open-below
    "O" #'evil-open-above
    "x" #'evil-delete-char
    "d" #'evil-delete
-   "D" #'evil-delete-line
    "y" #'evil-yank
    "p" #'evil-paste-after
    "P" #'evil-paste-before
@@ -57,21 +55,16 @@
    "v" #'evil-visual-char
    "V" #'evil-visual-line
    "C-v" #'evil-visual-block
-   "C-u" #'evil-scroll-up
-   "C-d" #'evil-scroll-down
    ;; Search & Misc
    "u" #'evil-undo
    "C-r" #'evil-redo
    "<tab>" #'evil-jump-forward
    "C-o" #'evil-jump-backward
-   
    "<escape>" #'evil-force-normal-state)
 
   (general-define-key
    :states 'insert
-   "C-w"      #'evil-delete-backward-word
-   "C-u"      #'evil-scroll-up
-   "C-d"      #'evil-scroll-down
+   "C-w"      #'evil-delete-backward-word)
    "<escape>" #'evil-normal-state)
 
   ;; Completion
