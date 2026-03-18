@@ -41,10 +41,10 @@
       (setq minor-mode-map-alist (seq-filter keep-p minor-mode-map-alist))
       (setq minor-mode-overriding-map-alist (seq-filter keep-p minor-mode-overriding-map-alist))))
 
-  (my/purge-all-keys)
+  ;; (my/purge-all-keys)
 
   ;; Hook it so that any plugin loaded *after* this also gets its minor-mode keys purged
-  (add-hook 'after-load-functions #'my/filter-minor-mode-maps)
+  ;; (add-hook 'after-load-functions #'my/filter-minor-mode-maps)
 
   ;; ── Helper Functions ───────────────────────────────────────
 
@@ -84,6 +84,7 @@
     "c"  '(:ignore t :which-key "code")
     "ca" '(eglot-code-actions :which-key "code actions")
     "cf" '(eglot-format-buffer :which-key "format")
+    "cc" '(comment-dwim :which-key "format")
 
     "f"  '(:ignore t :which-key "files")
     "ff" '(find-file :which-key "find file")
@@ -100,12 +101,7 @@
     
     "t"  '(eat :which-key "terminal")
 
-    "g"  '(:ignore t :which-key "git")
-    "gs" '(magit-status :which-key "status")
-    "gd" '(magit-diff-unstaged :which-key "diff unstaged")
-    "gl" '(magit-log-current :which-key "log current")
-    "gb" '(magit-branch-checkout :which-key "branch checkout")
-    "gc" '(magit-commit-create :which-key "commit"))
+    "g" '(magit-status :which-key "status"))
 
   ;; Minibuffer / Completion Maps
   (general-define-key

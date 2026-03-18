@@ -29,3 +29,4 @@ emacs/tramp
 
 !.zshrc
 !update_mirrors.sh
+/emacs/transient/
