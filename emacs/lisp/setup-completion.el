@@ -29,10 +29,12 @@
   ;; Enable the Echo extension
   (corfu-echo-mode 1)
   ;; This allows Corfu to trigger even when deleting characters
-  (with-eval-after-load 'corfu-auto
-    (add-to-list 'corfu-auto-commands #'backward-delete-char-untabify)
-    (add-to-list 'corfu-auto-commands #'delete-backward-char))
-)
+  (with-eval-after-load 'corfu
+    (general-define-key
+     :keymaps 'corfu-map
+     "C-j" #'corfu-next
+     "C-k" #'corfu-previous))
+  )
 
 ;; Embark (Actions for everything)
 (use-package embark

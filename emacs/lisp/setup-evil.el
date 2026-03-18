@@ -16,7 +16,7 @@
   (evil-collection-setup-minibuffer t)
   :config
   ;; Only enable for things you actually use
-  (evil-collection-init '(dired eglot eat magit buff-menu ibuffer)))
+  (evil-collection-init '(dired eglot eat magit buff-menu ibuffer corfu)))
 
 (use-package evil-commentary
   :after evil

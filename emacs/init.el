@@ -49,6 +49,7 @@
 (require 'setup-lsp)
 (require 'setup-languages)
 (require 'setup-keys)
+(require 'setup-eww)
 
 ;; ── Sane Defaults ───────────────────────────────────────────
 (setq-default
@@ -56,6 +57,10 @@
  indent-tabs-mode nil
  truncate-lines t
  fill-column 80)
+
+;; Suppress undo discard-info warnings
+(add-to-list 'warning-suppress-types '(undo discard-info))
+(setq eww-download-directory "~/downloads/eww/")
 
 (set-language-environment "UTF-8")
 (prefer-coding-system 'utf-8)

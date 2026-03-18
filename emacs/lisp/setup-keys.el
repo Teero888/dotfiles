@@ -5,48 +5,7 @@
   :config
   (general-evil-setup t)
 
-  (defun my/purge-all-keys ()
-    "Programmatically unbinds every key in Emacs to enforce a strict whitelist."
-    (let ((new-global (make-keymap)))
-      (let ((i 32))
-        (while (<= i 126)
-          (define-key new-global (vector i) #'self-insert-command)
-          (setq i (1+ i))))
-      (define-key new-global (kbd "RET")     #'newline)
-      (define-key new-global (kbd "TAB")     #'indent-for-tab-command)
-      (define-key new-global (kbd "DEL")     #'backward-delete-char-untabified)
-      (define-key new-global (kbd "<backspace>") #'backward-delete-char)
-      (define-key new-global (kbd "C-g")     #'keyboard-quit)
-      (define-key new-global (kbd "M-x")     #'execute-extended-command)
-      (define-key new-global (kbd "<left>")     #'left-char)
-      (define-key new-global (kbd "<right>")     #'right-char)
-      
-      (use-global-map new-global))
-
-    (setq emulation-mode-map-alists nil)
-
-    (my/filter-minor-mode-maps))
-
-  (defvar my/allowed-minor-mode-prefixes
-    '("eat" "magit" "git-gutter")
-    "List of string prefixes for minor modes whose keymaps should NOT be purged.")
-
-  (defun my/filter-minor-mode-maps (&rest _)
-    "Purge minor mode maps, keeping only those whose names match a prefix in `my/allowed-minor-mode-prefixes`."
-    (let ((keep-p (lambda (cons)
-                    (let ((mode-name (symbol-name (car cons))))
-                      (seq-some (lambda (prefix)
-                                  (string-prefix-p prefix mode-name))
-                                my/allowed-minor-mode-prefixes)))))
-      (setq minor-mode-map-alist (seq-filter keep-p minor-mode-map-alist))
-      (setq minor-mode-overriding-map-alist (seq-filter keep-p minor-mode-overriding-map-alist))))
-
-  ;; (my/purge-all-keys)
-
-  ;; Hook it so that any plugin loaded *after* this also gets its minor-mode keys purged
-  ;; (add-hook 'after-load-functions #'my/filter-minor-mode-maps)
-
-  ;; ── Helper Functions ───────────────────────────────────────
+  ;; ─ Helper Functions ─
 
   (defun my/minibuffer-quit ()
     (interactive)
@@ -68,12 +27,56 @@
   (general-define-key
    :states 'insert
    "C-SPC" #'corfu-toggle
-   "C-y"   #'corfu-insert)
+   "C-y"   #'corfu-insert
+   "C-k"   nil)
 
   ;; Leader Key Setup (SPC)
   (general-create-definer my/leader-keys
     :keymaps '(normal visual)
     :prefix "SPC")
+
+  (general-define-key
+   :states '(normal visual motion)
+   "C-j" #'evil-next-line
+   "C-k" #'evil-previous-line)
+
+  ;; Magit: C-hjkl movement (C-j UP, C-k DOWN)
+  (defun my/scrub-magit-maps ()
+    (dolist (sym '(magit-file-section-map
+                   magit-hunk-section-map
+                   magit-untracked-section-map
+                   magit-stashed-section-map
+                   magit-commit-section-map
+                   magit-branch-section-map
+                   magit-remote-section-map
+                   magit-tag-section-map
+                   magit-module-commit-section-map))
+      (when (boundp sym)
+        (let ((m (symbol-value sym)))
+          (when (keymapp m)
+            (define-key m (kbd "C-h") nil)
+            (define-key m (kbd "C-k") nil)
+            (define-key m (kbd "C-j") nil)
+            (define-key m (kbd "C-l") nil))))))
+
+  (with-eval-after-load 'magit
+    ;; Bind globally in all magit modes
+    (general-define-key
+     :keymaps '(magit-mode-map
+                magit-status-mode-map
+                magit-diff-mode-map
+                magit-log-mode-map
+                magit-section-mode-map)
+     :states '(normal visual motion emacs)
+     "C-h" #'evil-backward-char
+     "C-k" #'previous-line
+     "C-j" #'next-line
+     "C-l" #'evil-forward-char)
+
+    ;; Scrub text properties when magit loads, and also hook into magit-refresh
+    ;; to ensure they are scrubbed even if lazy-loaded later!
+    (my/scrub-magit-maps)
+    (add-hook 'magit-refresh-buffer-hook #'my/scrub-magit-maps))
 
   (my/leader-keys
     "SPC" '(switch-to-buffer :which-key "switch buffer") "."   '(find-file :which-key "find file")
@@ -113,12 +116,16 @@
    "<escape>"  #'my/minibuffer-quit
    "<tab>"     #'vertico-next
    "<backtab>" #'vertico-previous
+   "C-j"       #'vertico-next
+   "C-k"       #'vertico-previous
    "C-y"       #'vertico-insert)
 
   (general-define-key
    :keymaps 'corfu-map
    "<tab>"      #'corfu-next
    "<backtab>"  #'corfu-previous
+   "C-j"        #'corfu-next
+   "C-k"        #'corfu-previous
    "C-y"        #'corfu-insert))
 
 (provide 'setup-keys)
