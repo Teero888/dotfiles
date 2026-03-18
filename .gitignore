@@ -7,6 +7,19 @@ lazy-lock.json
 !alacritty/
 !alacritty/**
 
+!emacs/
+!emacs/**
+emacs/eln-cache
+emacs/straight
+emacs/tree-sitter
+emacs/recentf
+emacs/places
+emacs/history
+emacs/auto-save-list
+emacs/url
+emacs/projectile-bookmarks.eld
+emacs/*.elc
+
 !i3/
 !i3/**
 

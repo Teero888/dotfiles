@@ -1,4 +1,3 @@
-
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="trapd00r"
@@ -11,6 +10,7 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin/TClient"
 export PATH="$PATH:$HOME/.local/bin/revng"
 export PATH="$PATH:$HOME/software/emsdk"
 export PATH="$PATH:$HOME/software/emsdk/upstream/emscripten"
@@ -22,14 +22,13 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 export CC=clang
 export CXX=clang++
 
-xset r rate 200 50
-
 alias ll='ls -lah'
 alias tater='perf'
 
 # fuck gcc
 export CC=clang
 export CXX=clang++
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 export SUDO_ASKPASS=/usr/bin/lxqt-openssh-askpass
 
@@ -37,6 +36,8 @@ export SUDO_ASKPASS=/usr/bin/lxqt-openssh-askpass
 export ANDROID_HOME=/opt/android-sdk
 export NDK_HOME=/opt/android-ndk
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+source ~/emsdk/emsdk_env.sh EMSDK_QUIET=1 2&> /dev/null
 
 # default config comments and stuff {{{
 # Set list of themes to pick from when loading at random

@@ -30,7 +30,7 @@ default_floating_border pixel 0
 for_window [class="^.*"] border pixel 0
 bindsym Mod1+q exec --no-startup-id xdotool click 1
 bindsym Mod1+e exec --no-startup-id xdotool click 3
-bindsym $mod+q exec --no-startup-id alacritty
+bindsym $mod+q exec --no-startup-id emacs
 bindsym $mod+c kill
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run -l 1000
 bindsym Control+Mod1+f exec --no-startup-id firefox
@@ -42,7 +42,7 @@ bindsym Mod1+Left exec --no-startup-id variety -p
 # bindsym Mod1+s exec --no-startup-id variety --selector
 bindsym Mod1+f exec --no-startup-id boomer
 bindsym Mod1+t exec --no-startup-id setxkbmap de && sleep 0.1 && xdotool type "$(date +"%Y-%m-%d %A W%V %H:%M:%S.%N")"
-bindsym Print exec --no-startup-id flameshot gui
+bindsym Print exec --no-startup-id flameshot gui --raw | xclip -selection clipboard -t image/png
 
 # class                 border  bground text    indicator child_border
 client.focused          #FF0000 #FFFFFF #FFFFFF #FFFFFF   #FFFFFF
@@ -135,6 +135,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3
 bindsym $mod+m exit
+bindsym $mod+F1 exec --no-startup-id poweroff
 
 # resize window
 mode "resize" {
@@ -153,3 +154,7 @@ bindsym $mod+r mode "resize"
 
 for_window [class="Qalculate-gtk"] floating enable
 for_window [class="AstroSim"] floating enable
+
+exec --no-startup-id xset r rate 200 50
+exec --no-startup-id xrandr --rate 170
+
