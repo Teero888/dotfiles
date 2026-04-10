@@ -6,7 +6,7 @@ vim.keymap.set("n", "<left>", "")
 vim.keymap.set("n", "<right>", "")
 vim.keymap.set("n", "<up>", "")
 vim.keymap.set("n", "<down>", "")
-vim.keymap.set("n", "<leader>d", "<cmd>bd<CR>")
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Close [B]uffer [D]elete" })
 
 -- delete without copying to register
 vim.keymap.set("n", "x", '"_x')

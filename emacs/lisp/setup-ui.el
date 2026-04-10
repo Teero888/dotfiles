@@ -18,4 +18,9 @@
 (add-hook 'prog-mode-hook #'hl-line-mode)
 (add-hook 'after-init-hook #'show-paren-mode)
 
+(setq display-time-24hr-format t)
+(setq display-time-default-load-average nil)
+(setq display-time-day-and-date t)
+(display-time-mode 1)
+
 (provide 'setup-ui)

@@ -30,6 +30,10 @@
       (kbd "C-n") #'eat-self-input
       (kbd "C-a") #'eat-self-input
       (kbd "C-e") #'eat-self-input
+      (kbd "C-<left>") #'eat-self-input
+      (kbd "C-<right>") #'eat-self-input
+      (kbd "C-y") #'eat-self-input
+      (kbd "C-v") #'eat-yank
       (kbd "<backspace>") #'eat-self-input
       (kbd "DEL") #'eat-self-input
       (kbd "<delete>") #'eat-self-input

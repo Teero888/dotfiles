@@ -19,15 +19,12 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 
 # export PATH="$PATH:/path/to/wasi-sdk-20.0/bin"
 
-export CC=clang
-export CXX=clang++
-
 alias ll='ls -lah'
 alias tater='perf'
 
 # fuck gcc
-export CC=clang
-export CXX=clang++
+# export CC=clang
+# export CXX=clang++
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 export SUDO_ASKPASS=/usr/bin/lxqt-openssh-askpass

@@ -39,10 +39,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			return
 		end
 
-		-- You may want to disable document highlighting for large files
-		if client.name ~= "tsserver" then
-			on_attach(client, bufnr)
-		end
+		-- Apply on_attach to all clients
+		on_attach(client, bufnr)
 	end,
 })
 
@@ -50,7 +48,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = {},
+	ensure_installed = { "ts_ls", "lua_ls", "clangd", "rust_analyzer", "html" },
 	handlers = {
 		function(server_name)
 			require("lspconfig")[server_name].setup({
