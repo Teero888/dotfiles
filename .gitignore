@@ -27,6 +27,9 @@ emacs/tramp
 !frametee/
 !frametee/**
 
+!boomer/
+!boomer/**
+
 !.zshrc
 !update_mirrors.sh
 /emacs/transient/
