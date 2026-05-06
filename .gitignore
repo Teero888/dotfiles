@@ -27,6 +27,9 @@ emacs/tramp
 !frametee/
 !frametee/**
 
+!keyd/
+!keyd/**
+
 !boomer/
 !boomer/**
 

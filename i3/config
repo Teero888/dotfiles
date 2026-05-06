@@ -158,3 +158,6 @@ for_window [class="AstroSim"] floating enable
 exec --no-startup-id xset r rate 200 50
 exec --no-startup-id xrandr --rate 170
 
+# Update systemd/DBus environment and restart the desktop portals
+exec --no-startup-id dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
+exec --no-startup-id systemctl --user stop xdg-desktop-portal-gtk xdg-desktop-portal

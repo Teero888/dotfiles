@@ -41,3 +41,7 @@ vim.keymap.set("i", "<A-j>", "<Esc><cmd>m .+1<CR>==gi", { desc = "Move line down
 vim.keymap.set("i", "<A-k>", "<Esc><cmd>m .-2<CR>==gi", { desc = "Move line up" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+-- make yank be on z
+vim.keymap.set({ 'n', 'o', 'x' }, 'z', 'y', { noremap = true })
+vim.keymap.set({ 'n', 'o', 'x' }, 'y', 'z', { noremap = true })
